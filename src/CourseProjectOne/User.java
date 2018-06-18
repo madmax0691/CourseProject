@@ -1,12 +1,13 @@
 package CourseProjectOne;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     private final String nickName;
     private final String name;
     private final String surname;
-    private final ArrayList<Game> favoriteGames = new ArrayList<>();
+    private final List<Game> favoriteGames = new ArrayList<>();
 
     public User(String nickName, String name, String surname) {
         this.nickName = nickName;
@@ -25,6 +26,7 @@ public class User {
         for (Game tempGame : favoriteGames) {
             if (tempGame.equals(game)){
                 favoriteGames.remove(game);
+                game.setFavoritesCounter(game.getFavoritesCounter()-1);
             } else {
                 throw new IllegalArgumentException("Sorry, but you do not have this game in your favorites");
             }

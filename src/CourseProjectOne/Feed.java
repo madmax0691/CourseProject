@@ -1,6 +1,8 @@
 package CourseProjectOne;
 
+import java.util.List;
+
 public interface Feed {
-    void showFeed(int page);
+    List<Game> getFeed();
     Game getGame(int number);
 }

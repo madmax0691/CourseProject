@@ -1,9 +1,10 @@
 package CourseProjectOne;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class GamesLibrary {
-    private final ArrayList<Game> games = new ArrayList<>();
+    private final List<Game> games = new ArrayList<>();
 
     void addGame(Game game) {
         if (games.contains(game)) {
@@ -21,7 +22,9 @@ class GamesLibrary {
         }
     }
 
-    ArrayList<Game> getGames() {
-        return games;
+    List<Game> getGames() {
+        List<Game> tempGames = new ArrayList<>();
+        tempGames.addAll(0, games);
+        return tempGames;
     }
 }

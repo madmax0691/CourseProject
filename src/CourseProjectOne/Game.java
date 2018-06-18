@@ -2,6 +2,7 @@ package CourseProjectOne;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     private final String title;
@@ -9,27 +10,16 @@ public class Game {
     private final LocalDate releaseYear;
     private final String genre;
     private final String platform;
-    private double averageRating;
-    private final ArrayList<Review> reviews = new ArrayList<>();
-    private long favoritesCounter;
+    private final List<Review> reviews = new ArrayList<>();
+    private long favoritesCounter = 0;
 
     public Game(String title, String description, LocalDate releaseYear, String genre,
-                String platform, double averageRating, long favoritesCounter) {
+                String platform) {
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
         this.genre = genre;
         this.platform = platform;
-        this.averageRating = averageRating;
-        this.favoritesCounter = favoritesCounter;
-    }
-
-    private void setAverageRating() {
-        double tempAverageRatingSum = 0;
-        for (Review tempReview : reviews) {
-            tempAverageRatingSum += tempReview.getRating();
-        }
-        averageRating = tempAverageRatingSum / reviews.size();
     }
 
     public void addReview(Review review) {
@@ -39,14 +29,13 @@ public class Game {
             }
         }
         reviews.add(review);
-        setAverageRating();
+        ;
     }
 
     public void removeReview(Review review) {
         for (Review tempReview : reviews) {
             if (tempReview.getUser().equals(review.getUser())) {
                 reviews.remove(review);
-                setAverageRating();
             } else {
                 throw new IllegalArgumentException("Sorry, but this game does not have your review");
             }
@@ -58,7 +47,14 @@ public class Game {
     }
 
     public double getAverageRating() {
-        return averageRating;
+        double tempAverageRatingSum = 0.0;
+        if (reviews.size() == 0) {
+            return 0.0;
+        }
+        for (Review tempReview : reviews) {
+            tempAverageRatingSum += tempReview.getRating();
+        }
+        return tempAverageRatingSum / reviews.size();
     }
 
     public long getFavoritesCounter() {
@@ -69,7 +65,7 @@ public class Game {
         return description;
     }
 
-    public void showReviews(){
+    public void showReviews() {
         for (Review tempReview : reviews) {
             System.out.println(tempReview);
         }
@@ -86,7 +82,7 @@ public class Game {
                 ", releaseYear=" + releaseYear +
                 ", genre='" + genre + '\'' +
                 ", platform='" + platform + '\'' +
-                ", averageRating=" + averageRating +
+                ", averageRating=" + getAverageRating() +
                 ", favoritesCounter=" + favoritesCounter +
                 '}';
     }
