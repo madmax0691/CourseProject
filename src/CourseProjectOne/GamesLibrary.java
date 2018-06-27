@@ -28,9 +28,9 @@ public class GamesLibrary {
         return tempGames;
     }
 
-    public Game getGameByName(String name){//temporal
+    public Game getGameByName(String name) {//temporal
         for (Game game : games) {
-            if (game.getTitle().equals(name)){
+            if (game.getTitle().equals(name)) {
                 return game;
             }
         }
