@@ -28,9 +28,11 @@ public class UsersFileOut {
             stringBuilder.append(users.get(i).getName());
             stringBuilder.append("\"");
             stringBuilder.append("\t");
+            stringBuilder.append("\t");
             stringBuilder.append("\"");
             stringBuilder.append(users.get(i).getSurname());
             stringBuilder.append("\"");
+            stringBuilder.append("\t");
             stringBuilder.append("\t");
             stringBuilder.append("\"");
             stringBuilder.append(users.get(i).getListOfFavorites());
