@@ -15,7 +15,7 @@ public class UsersFileOut {
 
     private void addFirstLine() {
         stringBuilder.append("\"" + "NickName:" + "\"" + "\t" + "\"" + "Name:" + "\"" + "\t" + "\"" + "SurName:"
-                + "\"" + "\t" + "\"" + "List of favorite games:" + "\" " + "\n");
+                + "\"" + "\t" + "\"" + "List of favorite games:" + "\"" + "\n");
     }
 
     private List<String> initialize(List<User> users) {
@@ -28,11 +28,9 @@ public class UsersFileOut {
             stringBuilder.append(users.get(i).getName());
             stringBuilder.append("\"");
             stringBuilder.append("\t");
-            stringBuilder.append("\t");
             stringBuilder.append("\"");
             stringBuilder.append(users.get(i).getSurname());
             stringBuilder.append("\"");
-            stringBuilder.append("\t");
             stringBuilder.append("\t");
             stringBuilder.append("\"");
             stringBuilder.append(users.get(i).getListOfFavorites());
