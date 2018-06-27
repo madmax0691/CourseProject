@@ -2,11 +2,11 @@ package CourseProjectOne;
 
 public class GamesReviewerRunner {
     public static void main(String[] args) {
-        AdminDemo adminDemo = new AdminDemo();
+        AdminDemoManualEntering adminDemoManualEntering = new AdminDemoManualEntering();
         User madmax = new User("madmax", "Max", "Kazmyryk");
         User ahmed = new User("ahmed01", "Ahmed", "Amedov");
 
-        FeedOfRandomGames feedOfRandomGames = new FeedOfRandomGames(adminDemo.getGamesLibrary());
+        FeedOfRandomGames feedOfRandomGames = new FeedOfRandomGames(adminDemoManualEntering.getGamesLibrary());
 
         System.out.println("Смотрим рандомную стену, страница 1");
         for (int i = 0; i < 9; i++) {
@@ -57,7 +57,7 @@ public class GamesReviewerRunner {
             System.out.println(feedOfRandomGames.getFeed().get(i));
         }
 
-        FeedOfFavoritesGames feedOfFavoritesGames = new FeedOfFavoritesGames(adminDemo.getGamesLibrary());
+        FeedOfFavoritesGames feedOfFavoritesGames = new FeedOfFavoritesGames(adminDemoManualEntering.getGamesLibrary());
 
         System.out.println("Самая добавляемаяя игра должна быть 4 из списка случайных в списке самых добавляемых:");
         for (int i = 0; i < 9; i++) {
@@ -65,7 +65,7 @@ public class GamesReviewerRunner {
             System.out.println(feedOfFavoritesGames.getFeed().get(i));
         }
 
-        FeedOfTopGames feedOfTopGames = new FeedOfTopGames(adminDemo.getGamesLibrary());
+        FeedOfTopGames feedOfTopGames = new FeedOfTopGames(adminDemoManualEntering.getGamesLibrary());
 
         System.out.println("Самая топовая игра должна быть 5 из списка рандомных");
         for (int i = 0; i < 9; i++) {

@@ -11,12 +11,16 @@ public class Review {
         this.user = user;
     }
 
-    double getRating() {
+    public double getRating() {
         return rating;
     }
 
-    User getUser() {
+    public User getUser() {
         return user;
+    }
+
+    public String getReview() {
+        return review;
     }
 
     @Override
@@ -24,7 +28,7 @@ public class Review {
         return "Review{" +
                 "review='" + review + '\'' +
                 ", rating=" + rating +
-                ", user=" + user +
+                ", user=" + user.getNickName() +
                 '}';
     }
 }

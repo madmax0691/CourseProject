@@ -2,7 +2,7 @@ package CourseProjectOne;
 
 import java.time.LocalDate;
 
-class AdminDemo {
+class AdminDemoManualEntering {
     private final GamesLibrary gamesLibrary = new GamesLibrary();
 
     private Game game1 = new Game("GOD OF WAR", "His vengeance against the gods of Olympus" +
@@ -65,7 +65,7 @@ class AdminDemo {
             LocalDate.of(2018, 4, 24),
             "Strategy", "PC");
 
-    public AdminDemo() {
+    public AdminDemoManualEntering() {
         gamesLibrary.addGame(game1);
         gamesLibrary.addGame(game2);
         gamesLibrary.addGame(game3);

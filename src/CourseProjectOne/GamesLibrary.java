@@ -3,10 +3,10 @@ package CourseProjectOne;
 import java.util.ArrayList;
 import java.util.List;
 
-class GamesLibrary {
+public class GamesLibrary {
     private final List<Game> games = new ArrayList<>();
 
-    void addGame(Game game) {
+    public void addGame(Game game) {
         if (games.contains(game)) {
             throw new IllegalArgumentException("We have this game!");
         } else {
@@ -14,7 +14,7 @@ class GamesLibrary {
         }
     }
 
-    void removeGame(Game game) {
+    public void removeGame(Game game) {
         if (games.contains(game)) {
             games.remove(game);
         } else {
@@ -22,9 +22,18 @@ class GamesLibrary {
         }
     }
 
-    List<Game> getGames() {
+    public List<Game> getGames() {
         List<Game> tempGames = new ArrayList<>();
         tempGames.addAll(0, games);
         return tempGames;
+    }
+
+    public Game getGameByName(String name){//temporal
+        for (Game game : games) {
+            if (game.getTitle().equals(name)){
+                return game;
+            }
+        }
+        return null;
     }
 }

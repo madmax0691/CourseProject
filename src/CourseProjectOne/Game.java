@@ -75,6 +75,22 @@ public class Game {
         this.favoritesCounter = favoritesCounter;
     }
 
+    public String getReleaseYear() {
+        return releaseYear.toString();
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
     @Override
     public String toString() {
         return "Game{" +
