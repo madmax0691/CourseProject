@@ -24,7 +24,9 @@ public class TextFileIO {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new ArrayList<>(Arrays.asList(stringBuilder.toString().split(";")));
+        return new ArrayList<>(Arrays.asList(stringBuilder.toString().
+                replace("\"", "|").replace("|,", "#").
+                replace("|", "").split("#")));
     }
 
     public static void write(String fileName, List<String> text) {

@@ -7,13 +7,13 @@ public class FileIORunner {
 
     public static void main(String[] args) {
         //Check games fileINPUT
-        GamesFileIn gamesFileIn = new GamesFileIn("Files/GamesIn.csv", ";",
+        GamesFileIn gamesFileIn = new GamesFileIn("Files/GamesIn.csv", ",",
                 5);
 
         System.out.println(gamesFileIn.getGamesLibrary().getGames());//check games initialization from file
 
         //Check users fileINPUT
-        UsersFileIn usersFileIn = new UsersFileIn("Files/UsersIn.csv", ";",
+        UsersFileIn usersFileIn = new UsersFileIn("Files/UsersIn.csv", ",",
                 4, gamesFileIn.getGamesLibrary());
 
         //check lists
@@ -22,7 +22,7 @@ public class FileIORunner {
         usersFileIn.getUsers().get(1).showListOfFavorites();
 
         //check reviews fileINPUT
-        ReviewsFileIn reviewsFileIn = new ReviewsFileIn("Files/ReviewsIn.csv", ";",
+        ReviewsFileIn reviewsFileIn = new ReviewsFileIn("Files/ReviewsIn.csv", ",",
                 3, usersFileIn.getUsers());
         reviewsFileIn.addReviews(gamesFileIn.getGamesLibrary().getGames().get(3));
         FeedOfTopGames feedOfTopGames = new FeedOfTopGames(gamesFileIn.getGamesLibrary());

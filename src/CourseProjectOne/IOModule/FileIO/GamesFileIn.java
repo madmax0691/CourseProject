@@ -12,6 +12,7 @@ public class GamesFileIn {
 
     public GamesFileIn(String fileName, String splitter, int numberOfColumns) {
         List<String> gamesInput = TextFileIO.read(fileName, splitter);
+
         removeTitles(gamesInput, numberOfColumns);
         initialize(gamesInput, numberOfColumns);
     }
