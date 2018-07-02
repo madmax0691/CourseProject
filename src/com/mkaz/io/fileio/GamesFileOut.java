@@ -1,6 +1,6 @@
-package CourseProjectOne.IOModule.FileIO;
+package com.mkaz.io.fileio;
 
-import CourseProjectOne.GamesLibrary;
+import com.mkaz.GamesLibrary;
 
 import java.util.Arrays;
 import java.util.List;

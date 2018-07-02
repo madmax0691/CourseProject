@@ -1,4 +1,4 @@
-package CourseProjectOne.IOModule.FileIO;
+package com.mkaz.io.fileio;
 
 import java.io.*;
 import java.util.ArrayList;

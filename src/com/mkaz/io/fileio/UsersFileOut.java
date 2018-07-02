@@ -1,6 +1,6 @@
-package CourseProjectOne.IOModule.FileIO;
+package com.mkaz.io.fileio;
 
-import CourseProjectOne.User;
+import com.mkaz.User;
 
 import java.util.Arrays;
 import java.util.List;

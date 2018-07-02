@@ -1,8 +1,8 @@
-package CourseProjectOne.IOModule.FileIO;
+package com.mkaz.io.fileio;
 
-import CourseProjectOne.Game;
-import CourseProjectOne.Review;
-import CourseProjectOne.User;
+import com.mkaz.Game;
+import com.mkaz.Review;
+import com.mkaz.User;
 
 import java.util.ArrayList;
 import java.util.List;

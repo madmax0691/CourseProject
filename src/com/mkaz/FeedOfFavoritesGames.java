@@ -1,18 +1,18 @@
-package CourseProjectOne;
+package com.mkaz;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class FeedOfTopGames implements Feed {
+public class FeedOfFavoritesGames implements Feed {
     private final List<Game> feed;
 
-    public FeedOfTopGames(GamesLibrary gamesLibrary) {
+    public FeedOfFavoritesGames(GamesLibrary gamesLibrary) {
         feed = gamesLibrary.getGames();
         feed.sort(new Comparator<Game>() {
             @Override
             public int compare(Game o1, Game o2) {
-                return Double.compare(o1.getAverageRating(), o2.getAverageRating());
+                return Long.compare(o1.getFavoritesCounter(), o2.getFavoritesCounter());
             }
         });
         Collections.reverse(feed);

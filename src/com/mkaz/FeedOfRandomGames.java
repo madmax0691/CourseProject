@@ -1,4 +1,4 @@
-package CourseProjectOne;
+package com.mkaz;
 
 import java.util.Collections;
 import java.util.List;

@@ -1,4 +1,4 @@
-package CourseProjectOne;
+package com.mkaz;
 
 public class GamesReviewerRunner {
     public static void main(String[] args) {

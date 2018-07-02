@@ -1,7 +1,6 @@
-package CourseProjectOne;
+package com.mkaz;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class User {

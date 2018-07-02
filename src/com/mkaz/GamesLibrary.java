@@ -1,4 +1,4 @@
-package CourseProjectOne;
+package com.mkaz;
 
 import java.util.ArrayList;
 import java.util.List;

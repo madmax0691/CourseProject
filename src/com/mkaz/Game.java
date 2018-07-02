@@ -1,4 +1,4 @@
-package CourseProjectOne;
+package com.mkaz;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,7 +29,6 @@ public class Game {
             }
         }
         reviews.add(review);
-        ;
     }
 
     public void removeReview(Review review) {

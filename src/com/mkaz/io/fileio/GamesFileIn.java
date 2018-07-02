@@ -1,7 +1,7 @@
-package CourseProjectOne.IOModule.FileIO;
+package com.mkaz.io.fileio;
 
-import CourseProjectOne.Game;
-import CourseProjectOne.GamesLibrary;
+import com.mkaz.Game;
+import com.mkaz.GamesLibrary;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

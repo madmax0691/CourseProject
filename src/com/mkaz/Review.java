@@ -1,4 +1,4 @@
-package CourseProjectOne;
+package com.mkaz;
 
 public class Review {
     private final String review;
