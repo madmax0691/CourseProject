@@ -1,43 +1,49 @@
-//package com.mkaz.io.fileio;
-//
-//import com.mkaz.User;
-//
-//import java.util.Arrays;
-//import java.util.List;
-//
-//public class UsersFileOut {
-//    private final StringBuilder stringBuilder = new StringBuilder();
-//
-//    public UsersFileOut(String fileName, List<User> users) {
-//        addFirstLine();
-//        TextFileIO.write(fileName, initialize(users));
-//    }
-//
-//    private void addFirstLine() {
-//        stringBuilder.append("\"" + "NickName:" + "\"" + "\t" + "\"" + "Name:" + "\"" + "\t" + "\"" + "SurName:"
-//                + "\"" + "\t" + "\"" + "List of favorite games:" + "\"" + "\n");
-//    }
-//
-//    private List<String> initialize(List<User> users) {
-//        for (int i = 0; i < users.size(); i++) {
-//            stringBuilder.append("\"");
-//            stringBuilder.append(users.get(i).getNickName());
-//            stringBuilder.append("\"");
-//            stringBuilder.append("\t");
-//            stringBuilder.append("\"");
-//            stringBuilder.append(users.get(i).getName());
-//            stringBuilder.append("\"");
-//            stringBuilder.append("\t");
-//            stringBuilder.append("\"");
-//            stringBuilder.append(users.get(i).getSurname());
-//            stringBuilder.append("\"");
-//            stringBuilder.append("\t");
-//            stringBuilder.append("\"");
-//            stringBuilder.append(users.get(i).getListOfFavorites());
-//            stringBuilder.append("\"");
-//            stringBuilder.append("\n");
-//        }
-//        List<String> outInfo = Arrays.asList(stringBuilder.toString().split("\n"));
-//        return outInfo;
-//    }
-//}
+package com.mkaz.io.fileio;
+
+import com.mkaz.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class UsersFileOut {
+    private final List<User> users;
+    private final List<String> usersInfo = new ArrayList<>();
+
+    public UsersFileOut(List<User> users) {
+        this.users = users;
+        initialize();
+    }
+
+    private void addFirstLine() {
+        usersInfo.add("\"" + "NickName:" + "\"" + "\t" + "\"" + "Name:" + "\"" + "\t" + "\"" + "SurName:"
+                + "\"" + "\t" + "\"" + "List of favorite games:" + "\"");
+    }
+
+    private void initialize() {
+        addFirstLine();
+        StringBuilder stringBuilder;
+        for (User user : users) {
+            stringBuilder = new StringBuilder();
+            stringBuilder.append("\"");
+            stringBuilder.append(user.getNickName());
+            stringBuilder.append("\"");
+            stringBuilder.append("\t");
+            stringBuilder.append("\"");
+            stringBuilder.append(user.getName());
+            stringBuilder.append("\"");
+            stringBuilder.append("\t");
+            stringBuilder.append("\"");
+            stringBuilder.append(user.getSurname());
+            stringBuilder.append("\"");
+            stringBuilder.append("\t");
+            stringBuilder.append("\"");
+            stringBuilder.append(user.getListOfFavorites());
+            stringBuilder.append("\"");
+            usersInfo.add(stringBuilder.toString());
+        }
+    }
+
+    public void write(String fileName) {
+        TextFileIO.write(fileName, usersInfo);
+    }
+}

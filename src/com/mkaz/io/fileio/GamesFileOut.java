@@ -8,17 +8,16 @@ import java.util.List;
 
 public class GamesFileOut {
     private final GamesLibrary gamesLibrary;
-    List<String> gamesInfo = new ArrayList<>();
+    private final List<String> gamesInfo = new ArrayList<>();
 
     public GamesFileOut(GamesLibrary gamesLibrary) {
         this.gamesLibrary = gamesLibrary;
+        initialize();
     }
 
     private void addFirstLine() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("\"" + "Title:" + "\"" + "\t" + "\"" + "Description:" + "\"" + "\t" + "\"" + "ReleaseYear:"
+        gamesInfo.add("\"" + "Title:" + "\"" + "\t" + "\"" + "Description:" + "\"" + "\t" + "\"" + "ReleaseYear:"
                 + "\"" + "\t" + "\"" + "Genre:" + "\"" + "\t" + "\"" + "Platform:" + "\"");
-        gamesInfo.add(stringBuilder.toString());
     }
 
     private void initialize() {
@@ -50,7 +49,6 @@ public class GamesFileOut {
     }
 
     public void write(String fileName) {
-        initialize();
         TextFileIO.write(fileName, gamesInfo);
     }
 }
