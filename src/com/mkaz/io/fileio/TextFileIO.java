@@ -1,52 +1,34 @@
 package com.mkaz.io.fileio;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class TextFileIO {
 
-    public static List<String> read(String fileName, String splitter) {
+    public static String read(String fileName, String splitter) {
         StringBuilder stringBuilder = new StringBuilder();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(
-                    new File(fileName).getAbsoluteFile()));
-            try {
-                String s;
-                while ((s = bufferedReader.readLine()) != null) {
-                    stringBuilder.append(s);
-                    stringBuilder.append(splitter);
-                }
-            } finally {
-                bufferedReader.close();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(
+                new File(fileName).getAbsoluteFile()))) {
+            String s;
+            while ((s = bufferedReader.readLine()) != null) {
+                stringBuilder.append(s);
+                stringBuilder.append(splitter);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new ArrayList<>(Arrays.asList(stringBuilder.toString().
-                replace("\"", "|").replace("|,", "#").
-                replace("|", "").split("#")));
+        return stringBuilder.toString();
     }
 
-    public static void write(String fileName, List<String> text) {
+    public static void write(String fileName, String text) {
         File file = new File(fileName);
         try {
             file.createNewFile();
+            System.out.println("File: " + fileName + " has created!");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try {
-            PrintWriter printWriter = new PrintWriter(file.getAbsoluteFile());
-            int counter = 0;
-            try {
-                while (counter < text.size()) {
-                    printWriter.println(text.get(counter));
-                    counter++;
-                }
-            } finally {
-                printWriter.close();
-            }
+        try (PrintWriter printWriter = new PrintWriter(file.getAbsoluteFile())) {
+            printWriter.println(text);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

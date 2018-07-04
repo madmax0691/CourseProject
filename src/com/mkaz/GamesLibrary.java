@@ -36,4 +36,11 @@ public class GamesLibrary {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "GamesLibrary{" +
+                "games=" + games +
+                '}';
+    }
 }

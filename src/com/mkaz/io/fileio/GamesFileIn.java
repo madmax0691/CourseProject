@@ -10,13 +10,11 @@ import java.util.List;
 public class GamesFileIn {
     private final GamesLibrary gamesLibrary = new GamesLibrary();
     private final List<String> gamesInput;
-    private final int numberOfColumns;
+    private final int numberOfColumns = 5;
+    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
-    public GamesFileIn(List<String> gamesInput, int numberOfColumns) {
+    public GamesFileIn(List<String> gamesInput) {
         this.gamesInput = gamesInput;
-        this.numberOfColumns = numberOfColumns;
-        removeTitles();
-        initialize();
     }
 
     private void removeTitles() {
@@ -25,8 +23,8 @@ public class GamesFileIn {
         }
     }
 
-    private void initialize() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");//Needs for reading date format
+    public void addAllGames() {
+        removeTitles();
         for (int i = 0; i < gamesInput.size() / numberOfColumns; i++) {
             gamesLibrary.addGame(new Game(gamesInput.get(i * numberOfColumns), gamesInput.get(1 + i * numberOfColumns),
                     LocalDate.parse(gamesInput.get(2 + i * numberOfColumns), dateTimeFormatter),
