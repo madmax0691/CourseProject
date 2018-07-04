@@ -3,25 +3,29 @@ package com.mkaz.io.fileio;
 import com.mkaz.Game;
 import com.mkaz.GamesLibrary;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GamesFileOut {
-    private final StringBuilder stringBuilder = new StringBuilder();
     private final GamesLibrary gamesLibrary;
+    List<String> gamesInfo = new ArrayList<>();
 
     public GamesFileOut(GamesLibrary gamesLibrary) {
         this.gamesLibrary = gamesLibrary;
     }
 
     private void addFirstLine() {
+        StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\"" + "Title:" + "\"" + "\t" + "\"" + "Description:" + "\"" + "\t" + "\"" + "ReleaseYear:"
                 + "\"" + "\t" + "\"" + "Genre:" + "\"" + "\t" + "\"" + "Platform:" + "\"" + "\n");
+        gamesInfo.add(stringBuilder.toString());
     }
 
-    private List<String> initialize() {
+    private void initialize() {
         addFirstLine();
+        StringBuilder stringBuilder;
         for (Game game : gamesLibrary.getGames()) {
+            stringBuilder = new StringBuilder();
             stringBuilder.append("\"");
             stringBuilder.append(game.getTitle());
             stringBuilder.append("\"");
@@ -41,12 +45,12 @@ public class GamesFileOut {
             stringBuilder.append("\"");
             stringBuilder.append(game.getPlatform());
             stringBuilder.append("\"");
-            stringBuilder.append("\n");
+            gamesInfo.add(stringBuilder.toString());
         }
-        return Arrays.asList(stringBuilder.toString().split("\n"));
     }
 
     public void write(String fileName) {
-        TextFileIO.write(fileName, initialize());
+        initialize();
+        TextFileIO.write(fileName, gamesInfo);
     }
 }
