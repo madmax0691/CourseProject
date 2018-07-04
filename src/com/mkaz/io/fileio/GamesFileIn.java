@@ -9,26 +9,26 @@ import java.util.List;
 
 public class GamesFileIn {
     private final GamesLibrary gamesLibrary = new GamesLibrary();
-    private final List<String> gamesInput;
-    private final int numberOfColumns = 5;
+    private static final int NUMBER_OF_COLUMNS = 5;
+    private final List<String> gamesInfo;
     private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
-    public GamesFileIn(List<String> gamesInput) {
-        this.gamesInput = gamesInput;
+    public GamesFileIn(List<String> gamesInfo) {
+        this.gamesInfo = gamesInfo;
+        removeTitles();
     }
 
     private void removeTitles() {
-        for (int i = 0; i < numberOfColumns; i++) {
-            gamesInput.remove(0);
+        for (int i = 0; i < NUMBER_OF_COLUMNS; i++) {
+            gamesInfo.remove(0);
         }
     }
 
     public void addAllGames() {
-        removeTitles();
-        for (int i = 0; i < gamesInput.size() / numberOfColumns; i++) {
-            gamesLibrary.addGame(new Game(gamesInput.get(i * numberOfColumns), gamesInput.get(1 + i * numberOfColumns),
-                    LocalDate.parse(gamesInput.get(2 + i * numberOfColumns), dateTimeFormatter),
-                    gamesInput.get(3 + i * numberOfColumns), gamesInput.get(4 + i * numberOfColumns)));
+        for (int i = 0; i < gamesInfo.size() / NUMBER_OF_COLUMNS; i++) {
+            gamesLibrary.addGame(new Game(gamesInfo.get(i * NUMBER_OF_COLUMNS), gamesInfo.get(1 + i * NUMBER_OF_COLUMNS),
+                    LocalDate.parse(gamesInfo.get(2 + i * NUMBER_OF_COLUMNS), dateTimeFormatter),
+                    gamesInfo.get(3 + i * NUMBER_OF_COLUMNS), gamesInfo.get(4 + i * NUMBER_OF_COLUMNS)));
         }
     }
 

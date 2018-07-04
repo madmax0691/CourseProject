@@ -1,6 +1,7 @@
 package com.mkaz.io.fileio;
 
 import java.io.*;
+import java.util.List;
 
 public class TextFileIO {
 
@@ -19,16 +20,24 @@ public class TextFileIO {
         return stringBuilder.toString();
     }
 
-    public static void write(String fileName, String text) {
+    public static void write(String fileName, List<String> list) {
         File file = new File(fileName);
-        try {
-            file.createNewFile();
-            System.out.println("File: " + fileName + " has created!");
+        try (PrintWriter printWriter = new PrintWriter(file.getAbsoluteFile())) {
+            for (String s : list) {
+                printWriter.println(s);
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try (PrintWriter printWriter = new PrintWriter(file.getAbsoluteFile())) {
-            printWriter.println(text);
+    }
+
+    public static void createFile(String fileName) {
+        File file = new File(fileName);
+        try {
+            boolean newFile = file.createNewFile();
+            if (newFile) {
+                System.out.println("File: " + fileName + " has created!");
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,37 +1,39 @@
-//package com.mkaz.io.fileio;
-//
-//import com.mkaz.Game;
-//import com.mkaz.Review;
-//import com.mkaz.User;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class ReviewsFileIn {
-//    private final List<Review> reviews = new ArrayList<>();
-//
-//    public ReviewsFileIn(String fileName, String splitter, int numberOfColumns, List<User> users) {
-//        List<String> reviewsInput = TextFileIO.read(fileName, splitter);
-//        remove(reviewsInput, numberOfColumns);
-//        initialize(reviewsInput, numberOfColumns, users);
-//    }
-//
-//    private void remove(List<String> list, int numberOfColumns) {
-//        for (int i = 0; i < numberOfColumns; i++) { //remove first line with names of columns
-//            list.remove(0);
-//        }
-//    }
-//
-//    private void initialize(List<String> list, int numberOfColumns, List<User> users) {
-//        for (int i = 0; i < list.size() / numberOfColumns; i++) {
-//            reviews.add(new Review(list.get(1 + i * numberOfColumns), Double.parseDouble(list.get(2 + i * numberOfColumns)),
-//                    users.get(i)));
-//        }
-//    }
-//
-//    public void addReviews(Game game) {
-//        for (Review review : reviews) {
-//            game.addReview(review);
-//        }
-//    }
-//}
+package com.mkaz.io.fileio;
+
+import com.mkaz.Game;
+import com.mkaz.Review;
+import com.mkaz.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReviewsFileIn {
+    private static final int NUMBER_OF_COLUMNS = 3;
+    private final List<Review> reviews = new ArrayList<>();
+    private final List<String> reviewsInfo;
+
+    public ReviewsFileIn(List<String> reviewsInfo) {
+        this.reviewsInfo = reviewsInfo;
+        remove();
+    }
+
+    private void remove() {
+        for (int i = 0; i < NUMBER_OF_COLUMNS; i++) {
+            reviewsInfo.remove(0);
+        }
+    }
+
+    public void initialize(List<User> users) {
+        for (int i = 0; i < reviewsInfo.size() / NUMBER_OF_COLUMNS; i++) {
+            reviews.add(new Review(reviewsInfo.get(1 + i * NUMBER_OF_COLUMNS),
+                    Double.parseDouble(reviewsInfo.get(2 + i * NUMBER_OF_COLUMNS)),
+                    users.get(i)));
+        }
+    }
+
+    public void addReviews(Game game) {
+        for (Review review : reviews) {
+            game.addReview(review);
+        }
+    }
+}
