@@ -17,7 +17,7 @@ public class GamesFileOut {
     private void addFirstLine() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("\"" + "Title:" + "\"" + "\t" + "\"" + "Description:" + "\"" + "\t" + "\"" + "ReleaseYear:"
-                + "\"" + "\t" + "\"" + "Genre:" + "\"" + "\t" + "\"" + "Platform:" + "\"" + "\n");
+                + "\"" + "\t" + "\"" + "Genre:" + "\"" + "\t" + "\"" + "Platform:" + "\"");
         gamesInfo.add(stringBuilder.toString());
     }
 
