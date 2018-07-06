@@ -74,8 +74,8 @@ public class Game {
         this.favoritesCounter = favoritesCounter;
     }
 
-    public String getReleaseYear() {
-        return releaseYear.toString();
+    public LocalDate getReleaseYear() {
+        return releaseYear;
     }
 
     public String getGenre() {
