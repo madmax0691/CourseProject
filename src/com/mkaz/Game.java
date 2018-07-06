@@ -1,10 +1,11 @@
 package com.mkaz;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class Game implements Serializable {
     private final String title;
     private final String description;
     private final LocalDate releaseYear;
@@ -89,6 +90,7 @@ public class Game {
     public List<Review> getReviews() {
         return reviews;
     }
+
 
     @Override
     public String toString() {
