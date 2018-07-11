@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game implements Serializable {
+    private static final long serialVersionUID = -708177933616049536L;
     private final String title;
     private final String description;
     private final LocalDate releaseYear;
@@ -90,7 +91,6 @@ public class Game implements Serializable {
     public List<Review> getReviews() {
         return reviews;
     }
-
 
     @Override
     public String toString() {
